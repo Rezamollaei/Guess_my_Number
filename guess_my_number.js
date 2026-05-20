@@ -16,7 +16,21 @@ const root = document.documentElement;
 
 const messageStates = ["high", "low", "win", "lose", "invalid"];
 
-let secretnumber = Math.trunc(Math.random() * 20) + 1;
+const getSecretNumber = () => {
+  const buffer = new Uint32Array(1);
+  const cryptoSource = window.crypto || window.msCrypto;
+
+  if (cryptoSource?.getRandomValues) {
+    cryptoSource.getRandomValues(buffer);
+    return (buffer[0] % 20) + 1;
+  }
+
+  const seed = Date.now() ^ (performance?.now?.() ?? 0);
+  const lcg = (seed * 1664525 + 1013904223) % 2 ** 32;
+  return (lcg % 20) + 1;
+};
+
+let secretnumber = getSecretNumber();
 let score = 20;
 let highscore = Number(sessionStorage.getItem("highscore")) || 0;
 
@@ -100,7 +114,7 @@ inputGuess.addEventListener("keydown", (event) => {
 });
 
 againBtn.addEventListener("click", () => {
-  secretnumber = Math.trunc(Math.random() * 20) + 1;
+  secretnumber = getSecretNumber();
   updateScore(20);
   setMessage("Start guessing...");
   numberEl.textContent = "?";
