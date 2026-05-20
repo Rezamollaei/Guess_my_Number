@@ -3,8 +3,12 @@ This project is a simple Number Guessing Game built with JavaScript. The player 
 Features
 Secret Number: A secret number between 1 and 20 is randomly generated.
 Guessing Game: Players can input a number and check if their guess matches the secret number.
-Hints: The game provides feedback for high or low guesses.
-High Score: The highest score is tracked throughout the game.
+Hints: Color-coded feedback for high (warm coral) and low (cool blue) guesses.
+Guess History: Tagged bubbles track your past guesses.
+High Score: The highest score is tracked for the current session.
+Win/Lose States: The secret number glows green on victory and red on game over.
+Dark Mode: Toggle between dark and light themes.
+Animated Background: Floating numbers and emojis add motion to the UI.
 Restart: The game can be reset to start a new round.
 How It Works
 Game Initialization:
@@ -17,7 +21,7 @@ Players input a guess and click the Check button.
 If the guess is invalid (not a number or out of range), an error message is shown.
 If the guess is correct, the player wins, and the secret number is displayed in a larger size with a green background.
 If the guess is incorrect, the game provides feedback:
-Too high! or Too low!
+Too high! or Too low! with color-coded hints.
 The score is decremented for each incorrect guess.
 If the score reaches 0, the game ends, and the player is notified they lost.
 High Score:
@@ -27,10 +31,11 @@ Restarting the Game:
 
 The Again button allows the player to reset the game, generating a new secret number, resetting the score to 20, and preparing the UI for a new round.
 How to Play
-Guess the Number: Enter a number between 1 and 20 and click Check.
+Guess the Number: Enter a number between 1 and 20 and click Check (or press Enter).
 Receive Feedback: The game will tell you if your guess is too high, too low, or correct.
 Track Your Score: Each wrong guess decreases your score. Try to guess the number correctly before your score runs out!
 Reset the Game: Click Again to start a new game with a fresh secret number and score.
+Toggle Themes: Use the Dark/Light button to switch modes.
 Technologies Used
 HTML for the structure of the game, including input fields and buttons.
 CSS for styling the game layout, including the background and number display.
